@@ -53,9 +53,9 @@ public class MailClient
      * Envia un mensaje a otro usuario de email. Introduce el destinatario
      * y el cuerpo del mensaje
      */
-    public void sendMailItem(String to,String text)
+    public void sendMailItem(String to,String subject,String text)
     {
-        MailItem email = new MailItem(user,to,text);
+        MailItem email = new MailItem(user,to,subject,text);
         server.post(email);
     }    
 }
