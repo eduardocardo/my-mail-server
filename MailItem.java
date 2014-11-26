@@ -1,27 +1,27 @@
 
 /**
- * Write a description of class MailItem here.
+ * Esta clase representa un mensaje de email
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class MailItem
 {
-    // indica la procedencia del objeto
+    // indica la procedencia del mensaje
     private String from;
-    //indica el destinatario del objeto
+    //indica el destinatario del mensaje
     private String to;
-    //indica el contenido del objeto
+    //indica el contenido del mensaje
     private String message;
     /**
      * Constructor for objects of class MailItem
      */
-    public MailItem(String user,String toUser,String newMessage)
+    public MailItem(String from,String to,String message)
     {
         // 
-        from    = user;
-        to      = toUser;
-        message = newMessage;
+        this.from    = from;
+        this.to      = to;
+        this.message = message;
     }
     /**
      * Metodo que devuelve el remitente

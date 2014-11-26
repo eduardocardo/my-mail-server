@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class MailClient here.
+ * Representa un cliente de correo electronico.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -15,11 +15,11 @@ public class MailClient
     /**
      * Constructor for objects of class MailClient
      */
-    public MailClient(MailServer newServer,String myUser)
+    public MailClient(MailServer server,String user)
     {
-        server  = newServer;
+        this.server  = server;
         
-        user    = myUser;
+        this.user    = user;
     }
     
     /**
@@ -29,7 +29,8 @@ public class MailClient
     public MailItem getNextMailItem()
     {
         // recupera el siguiente mensaje
-        return server.getNextMailItem(user);
+        MailItem email = server.getNextMailItem(user);
+        return email;
         
     }
     /**
