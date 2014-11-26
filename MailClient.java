@@ -57,5 +57,14 @@ public class MailClient
     {
         MailItem email = new MailItem(user,to,subject,text);
         server.post(email);
-    }    
+    } 
+    /**
+     * Metodo para conocer el numero de emails que tiene el servidor 
+     * para un usuario
+     * y devuelve esa informacion en pantalla
+     */
+    public int howManyMailItems()
+    {
+        return server.howManyMailItems(user);
+    }   
 }
