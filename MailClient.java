@@ -68,5 +68,17 @@ public class MailClient
          int numMessage = server.howManyMailItems(user);
          System.out.println("Tienes " + numMessage + " emails");
     }      
-    
-}
+    /**
+     * Metodo que cuando recibes un correo responde de manera automatica
+     * al emisor
+     */
+    public void getNextMailItemAndAutorespond()
+    {
+        MailItem email    = server.getNextMailItem(user);
+        String newFrom    = email.getFrom();
+        String newSubject = ("RE: "+ email.getSubject());
+        String newMessage = email.getMessage() + "\nEstoy de vacaciones";
+        sendMailItem(newFrom,newSubject,newMessage);
+    }     
+}      
+
