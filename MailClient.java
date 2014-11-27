@@ -53,9 +53,9 @@ public class MailClient
      * Envia un mensaje a otro usuario de email. Introduce el destinatario
      * y el cuerpo del mensaje
      */
-    public void sendMailItem(String to,String subject,String text)
+    public void sendMailItem(String to,String subject,String message)
     {
-        MailItem email = new MailItem(user,to,subject,text);
+        MailItem email = new MailItem(user,to,subject,message);
         server.post(email);
     } 
     /**
@@ -63,8 +63,10 @@ public class MailClient
      * para un usuario
      * y devuelve esa informacion en pantalla
      */
-    public int howManyMailItems()
+    public void howManyMailItems()
     {
-        return server.howManyMailItems(user);
-    }   
+         int numMessage = server.howManyMailItems(user);
+         System.out.println("Tienes " + numMessage + " emails");
+    }      
+    
 }

@@ -11,20 +11,22 @@ public class MailItem
     private String from;
     //indica el destinatario del mensaje
     private String to;
-    //indica el contenido del mensaje
-    private String message;
     //indica el asunto del mensaje
     private String subject;
+    //indica el contenido del mensaje
+    private String message;
+    
     /**
      * Constructor for objects of class MailItem
      */
-    public MailItem(String from,String to,String message,String subject)
+    public MailItem(String from,String to,String subject,String message)
     {
         // 
         this.from    = from;
         this.to      = to;
-        this.message = message;
         this.subject = subject;
+        this.message = message;
+        
     }
     /**
      * Metodo que devuelve el remitente
