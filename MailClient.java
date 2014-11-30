@@ -31,7 +31,23 @@ public class MailClient
     {
         // recupera el siguiente mensaje
         lastEmail = server.getNextMailItem(user);
-        return lastEmail;
+        String tempMessage = lastEmail.getMessage();
+        if (tempMessage.contains("viagra") || tempMessage.contains("oferta"))
+            {
+                if (tempMessage.contains("proyecto"))
+                {
+                    return lastEmail;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        else
+        {
+            return lastEmail;
+            
+        }
 
     }
 
@@ -41,16 +57,34 @@ public class MailClient
      */
     public void printNextMailItem()
     {
-        if(server.howManyMailItems(user) > 0)
+       if (server.howManyMailItems(user) > 0)
         {
             lastEmail = server.getNextMailItem(user);
-            lastEmail.print();
+            String tempMessage = lastEmail.getMessage();
+            if (tempMessage.contains("viagra") || tempMessage.contains("oferta"))
+            {
+                if (tempMessage.contains("proyecto"))
+                {
+                    lastEmail.print();
+                }
+                else
+                {
+                    System.out.println("Has recibido spam");
+                    lastEmail = null;
+                }
+            }
+                     
+            else
+            {
+                lastEmail.print();
+            }
         }
-        else //si no hay mensajes lo indica en pantalla
+        else
         {
-            System.out.println("No hay ningun mensaje");
-        }   
-    }  
+            System.out.println("No hay mensajes nuevos");
+        }
+    }
+      
 
     /**
      * Envia un mensaje a otro usuario de email. Introduce el destinatario
@@ -103,6 +137,8 @@ public class MailClient
         {
             System.out.println("No hay ningun mensaje");
         } 
-    }   
-}      
+    }
+    
+}   
+      
 
