@@ -19,6 +19,8 @@ public class MailClient
     private int receivedEmails;
     //indica el numero de mensajes spam recibidos
     private int receivedSpam;
+    //indica el ultimo mensaje spam recibido
+    private MailItem lastSpam;
     /**
      * Constructor for objects of class MailClient
      */
@@ -29,7 +31,8 @@ public class MailClient
         lastEmail      = null;
         sendEmails     = 0;
         receivedEmails = 0;
-        receivedSpam = 0;
+        receivedSpam   = 0;
+        lastSpam       = null;
     }
 
     /**
@@ -55,6 +58,7 @@ public class MailClient
             else
             {
                 receivedSpam = receivedSpam +1;
+                lastSpam  = lastEmail;
                 return null;
             }
         }
@@ -86,9 +90,10 @@ public class MailClient
                 else
                 {
                     System.out.println("Has recibido spam");
-                    lastEmail = null;
                     receivedSpam = receivedSpam +1;
-
+                    lastSpam  = lastEmail;
+                    lastEmail = null;
+                    
                 }
             }
 
@@ -170,6 +175,21 @@ public class MailClient
         System.out.println("El numero de mensajes recibidos es : " + receivedEmails);
         System.out.println("de los cuales el " + ((receivedSpam*100)/receivedEmails) + "% es spam" ); 
 
-    }                       
+    } 
+    /**
+     * Metodo que imprime por pantalla en cualquier momento
+     * el ultimo mensaje spam recibido
+     */
+    public void printLastSpam()
+    {
+        if(lastSpam != null)
+        {
+            lastSpam.print();
+        }
+        else
+        {
+            System.out.println("No hay mensajes spam");
+        }
+    }    
 }   
 
